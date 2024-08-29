@@ -57,6 +57,8 @@ http://0.0.0.0/hbbh/stream.m3u8
 http://0.0.0.0/hbbh/stream.m3u8
 #EXTINF:-1 tvg-id="HDTV.fr" tvg-logo="https://y.imyr.cm/xy70wD.png" group-title="Undefined",HDTV (720p)
 http://0.0.0.0/hbbh/stream.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="HAHA| One Two, Three?" tvg-logo="https://y.imyr.cm/xy70wD.png" group-title="",HAHA| One Two, Three?
+http://0.0.0.0/hbbh/stream.m3u8
 """;
 
     public static readonly Stack<string> SampleM3ULinesStack

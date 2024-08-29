@@ -218,7 +218,15 @@ public static class M3UManager
             m3uChannel.GroupTitle = extinfAttributes.GetValueOrDefault("group-title", m3uChannel.GroupTitle);
 
             if (tagValue.Contains(','))
-                m3uChannel.Title = tagValue.Remove(0, (tagValue.Split(',')[0] + ',').Length);
+            {
+                var title = tagValue.Remove(0, (tagValue.Split(',')[0] + ',').Length);
+
+                var cnt = m3uChannel.TvgName?.Where(x => x == ',').Count() ?? 0;
+                if (cnt > 0)
+                    title = string.Join(",", tagValue.Split(',').Skip(cnt + 1));
+
+                m3uChannel.Title = title;
+            }
 
             m3uChannel.Duration = tagValue.Split(' ')[0];
 

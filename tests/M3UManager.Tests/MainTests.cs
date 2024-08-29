@@ -20,7 +20,7 @@ public class MainTests
         {
             Assert.That(parsedM3U, Is.Not.EqualTo(null));
             Assert.That(parsedM3U.Channels, Is.Not.EqualTo(null));
-            Assert.That(parsedM3U.Channels, Has.Count.EqualTo(2));
+            Assert.That(parsedM3U.Channels, Has.Count.EqualTo(3));
             Assert.That(parsedM3U.HasEndList, Is.EqualTo(false));
             Assert.That(parsedM3U.PlayListType, Is.EqualTo(null));
             Assert.That(parsedM3U.MediaSequence, Is.EqualTo(null));
@@ -42,6 +42,8 @@ public class MainTests
             Assert.That(parsedM3U.Channels[1].TvgName, Is.EqualTo(null));
             Assert.That(parsedM3U.Channels[1].TvgID, Is.EqualTo("HDTV.fr"));
             Assert.That(parsedM3U.Channels[1].Logo, Is.EqualTo("https://y.imyr.cm/xy70wD.png"));
+
+            Assert.That(parsedM3U.Channels[2].Title, Is.EqualTo("HAHA| One Two, Three?"));
         });
     }
 
@@ -90,4 +92,5 @@ public class MainTests
     [Test]
     public void TagsExtinfToStringTest()
         => ChannelToStringTest(TestData.SampleTagsExtinfChannel, TestData.SampleTagsExtinfContent, M3UType.AttributesType);
+
 }

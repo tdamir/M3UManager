@@ -20,7 +20,7 @@ public class MainTests
         {
             Assert.That(parsedM3U, Is.Not.EqualTo(null));
             Assert.That(parsedM3U.Channels, Is.Not.EqualTo(null));
-            Assert.That(parsedM3U.Channels, Has.Count.EqualTo(3));
+            Assert.That(parsedM3U.Channels, Has.Count.EqualTo(4));
             Assert.That(parsedM3U.HasEndList, Is.EqualTo(false));
             Assert.That(parsedM3U.PlayListType, Is.EqualTo(null));
             Assert.That(parsedM3U.MediaSequence, Is.EqualTo(null));
@@ -44,6 +44,9 @@ public class MainTests
             Assert.That(parsedM3U.Channels[1].Logo, Is.EqualTo("https://y.imyr.cm/xy70wD.png"));
 
             Assert.That(parsedM3U.Channels[2].Title, Is.EqualTo("HAHA| One Two, Three?"));
+
+            Assert.That(parsedM3U.Channels[3].Logo, Is.EqualTo("https://y.imyr.cm/xy70wD,8.png"));
+            Assert.That(parsedM3U.Channels[3].Title, Is.EqualTo("HAHA| One Two Three?"));
         });
     }
 

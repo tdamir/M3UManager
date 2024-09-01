@@ -222,6 +222,9 @@ public static class M3UManager
                 var title = tagValue.Remove(0, (tagValue.Split(',')[0] + ',').Length);
 
                 var cnt = m3uChannel.TvgName?.Where(x => x == ',').Count() ?? 0;
+                cnt += m3uChannel.Logo?.Where(x => x == ',').Count() ?? 0;
+                cnt += m3uChannel.GroupTitle?.Where(x => x == ',').Count() ?? 0;
+
                 if (cnt > 0)
                     title = string.Join(",", tagValue.Split(',').Skip(cnt + 1));
 

@@ -61,6 +61,8 @@ http://0.0.0.0/hbbh/stream.m3u8
 http://0.0.0.0/hbbh/stream.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="HAHA| One Two Three?" tvg-logo="https://y.imyr.cm/xy70wD,8.png" group-title="",HAHA| One Two Three?
 http://0.0.0.0/hbbh/stream.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="'Some "Title," 01 [Multi]" tvg-logo="https://y.imyr.cm/xy70wD,8.png" group-title="",'Some "Title," 01 [Multi]
+http://0.0.0.0/hbbh/stream.m3u8
 """;
 
     public static readonly Stack<string> SampleM3ULinesStack

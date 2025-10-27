@@ -216,10 +216,7 @@ public static class M3UManager
             m3uChannel.TvgName = extinfAttributes.GetValueOrDefault("tvg-name", m3uChannel.TvgName);
             m3uChannel.Logo = extinfAttributes.GetValueOrDefault("tvg-logo", m3uChannel.Logo);
             m3uChannel.GroupTitle = extinfAttributes.GetValueOrDefault("group-title", m3uChannel.GroupTitle);
-
-            if (tagValue.Contains(','))
-                m3uChannel.Title = tagValue.Remove(0, (tagValue.Split(',')[0] + ',').Length);
-
+            m3uChannel.Title = ExtractTitleFromExtinf(tagValue);
             m3uChannel.Duration = tagValue.Split(' ')[0];
 
             return true;
@@ -228,6 +225,30 @@ public static class M3UManager
         {
             return false;
         }
+    }
+    private static string ExtractTitleFromExtinf(string tagValue)
+    {
+        if (tagValue == null)
+            throw new ArgumentNullException($"'{nameof(tagValue)}' variable value is null.");
+
+        int commaIndex = -1;
+        bool insideQuotes = false;
+
+        for (int i = 0; i < tagValue.Length; i++)
+        {
+            if (tagValue[i] == '"')
+                insideQuotes = !insideQuotes;
+            else if (tagValue[i] == ',' && !insideQuotes)
+            {
+                commaIndex = i;
+                break;
+            }
+        }
+
+        if (commaIndex >= 0 && commaIndex + 1 < tagValue.Length)
+            return tagValue.Substring(commaIndex + 1).Trim();
+
+        return null;
     }
     private static bool TryDetectM3ULineTag(string m3uTagLine, out KeyValuePair<string, string> outputTag)
     {
